@@ -15,6 +15,9 @@ body, html {
   font-size: 18px;
   line-height: 1.5;
   color: #000028;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-scrollbar: none;
 }
 @media (max-width: 768px) {
   body, html {

@@ -75,18 +75,34 @@
             }
         }
     }
-
 }
 
-
-
-
-
-
-
-
-
 // profile /////////////////////////////////////////////////////////
+.profile{
+    &-info{height: 100vh;background-color: $gray_color01;
+        .container{  display: flex;align-items: flex-start; justify-content: center; flex-direction: column; height: 100%;row-gap: 100px;}
+        .txt-box{position: relative;font-size: 80px;line-height: 1.2; color: rgba(255,255,255,.2)}
+        .txt{position: relative;width: max-content;background: linear-gradient(to right, #fff, #fff) no-repeat;-webkit-background-clip: text;background-clip: text;background-size: 0%;transition: background-size cubic-bezier(.1,.5,.5,1) 0.5s}
+
+
+
+        .tag{display: flex;
+            &-item{color: #fff;}
+        }
+    }
+
+    @include bp('xxl'){
+        &-info{
+            .container{row-gap: 64px;}
+            .txt-box{font-size: 64px;}
+        }
+    }
+    @include bp('md'){
+        &-info{height: 100dvh;}
+    }
+    @include bp('sm'){}
+
+}
 
 // work /////////////////////////////////////////////////////////
 
