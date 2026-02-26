@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: {
             trigger: linkSection,
             start: "top 20%",
-            end: "30% 30%",
+            end: "10% 30%",
             scrub: 1.5,
         }
     });
@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PC /////////////////////////////////////////////////////////
     windowWidth.add("(min-width: 993px)", () => {
+
         // visual pin 효과
         const visualSection = gsap.utils.toArray(".visual");
         visualSection.forEach((panel, i) => {
@@ -43,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 pin: true,
                 scrub: .5,
                 pinSpacing: false,
-                markers: true
             });
         })
 
@@ -53,16 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 trigger: ".visual .container",
                 start: "top top",
                 end: "center 10%",
-                scrub: .5,
-                markers: true
             }
         });
         visualScroll.to(".visual .txt-area .txt-item", { x: 0, y: 0, opacity: 1 })
 
-
-
-
-
+        // link pin 효과
+        const linkSection = gsap.utils.toArray(".link");
+        linkSection.forEach((panel, i) => {
+            ScrollTrigger.create({
+                trigger: panel,
+                start: "top top",
+                pin: true,
+                scrub: .5,
+                pinSpacing: false,
+            });
+        })
 
     });
 
@@ -72,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // mobile /////////////////////////////////////////////////////////
     windowWidth.add("(max-width: 992px)", () => {
 
+        // visual txt 효과
         gsap.to(".visual .txt-area .txt-item", { x: 0, y: 0, opacity: 1 })
 
     });
