@@ -43,8 +43,8 @@ $circle:50%;
 
 // reset
 *,::after,::before{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body,html{width:100%;overflow-x: hidden;font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,sans-serif;font-size:18px;line-height:1.5;color:$gray-color01;-ms-overflow-style: none;scrollbar-width: none;-webkit-scrollbar: none; scroll-behavior: smooth;
-    @include bp('md'){font-size: 16px;}
+body,html{width:100%;font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,sans-serif;font-size:18px;line-height:1.5;color:$gray-color01;-ms-overflow-style: none;scrollbar-width: none;-webkit-scrollbar: none; scroll-behavior: smooth;
+    @include bp('lg'){width: 100dvw;font-size: 16px;}
 }
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 ol,ul{list-style:none}

@@ -9,7 +9,6 @@
 
 body, html {
   width: 100%;
-  overflow-x: hidden;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   font-size: 18px;
   line-height: 1.5;
@@ -19,8 +18,9 @@ body, html {
   -webkit-scrollbar: none;
   scroll-behavior: smooth;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   body, html {
+    width: 100dvw;
     font-size: 16px;
   }
 }
