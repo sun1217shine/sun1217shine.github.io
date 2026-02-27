@@ -143,6 +143,16 @@ section {
     transform-origin: bottom;
   }
 }
+@keyframes scale-up {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
 .visual {
   background-color: #fff;
   height: 200vh;
@@ -446,7 +456,7 @@ section {
   align-items: center;
   flex-wrap: wrap;
   position: sticky;
-  top: 0;
+  top: 2rem;
   left: 0;
   height: 100%;
 }
@@ -868,22 +878,51 @@ section {
 }
 .profile .timeline-item {
   position: relative;
+  flex: 0 1 50%;
+}
+.profile .timeline-item:nth-child(odd) {
+  padding-right: 40px;
+}
+.profile .timeline-item:nth-child(even) {
+  padding-left: 40px;
 }
 .profile .timeline-item::before {
   display: block;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 8px;
   width: 100%;
   height: 1px;
   background-color: #000028;
   content: "";
 }
 .profile .timeline .dot {
-  margin-bottom: 16px;
+  position: relative;
   width: 18px;
   height: 18px;
-  background: url("/img/dot.png") no-repeat left center;
+  margin-bottom: 6px;
+}
+.profile .timeline .dot::before {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #000028;
+  content: "";
+}
+.profile .timeline .dot::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #000028;
+  content: "";
+  animation: scale-up 1.5s linear infinite;
 }
 .profile .timeline .date {
   margin-bottom: 10px;
@@ -898,10 +937,27 @@ section {
   font-size: 24px;
   font-weight: 600;
 }
+@media (max-width: 1920px) {
+  .profile-tit {
+    font-size: 48px;
+  }
+  .profile .skill-head {
+    flex: 0 1 200px;
+  }
+  .profile .timeline-item:nth-child(odd) {
+    padding-right: 32px;
+  }
+  .profile .timeline-item:nth-child(even) {
+    padding-left: 32px;
+  }
+}
 @media (max-width: 1400px) {
   .profile .container {
     -moz-column-gap: 5%;
          column-gap: 5%;
+  }
+  .profile-head {
+    flex: 0 1 200px;
   }
   .profile .tag span {
     padding: 6px 16px;
@@ -910,11 +966,38 @@ section {
     padding: 24px 40px;
   }
   .profile-tit {
-    font-size: 48px;
+    font-size: 36px;
   }
   .profile .skill-head {
-    flex: 0 1 200px;
+    flex: 0 1 160px;
     font-size: 16px;
+  }
+  .profile .timeline-list {
+    row-gap: 50px;
+  }
+  .profile .timeline-item:nth-child(odd) {
+    padding-right: 24px;
+  }
+  .profile .timeline-item:nth-child(even) {
+    padding-left: 24px;
+  }
+  .profile .timeline-item::before {
+    top: 7px;
+  }
+  .profile .timeline .dot {
+    width: 16px;
+    height: 16px;
+  }
+  .profile .timeline .date {
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+  .profile .timeline .place {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  .profile .timeline .txt {
+    font-size: 18px;
   }
 }
 @media (max-width: 992px) {
@@ -939,8 +1022,18 @@ section {
   .profile .tag {
     flex: 0 1 100%;
   }
-  .profile-tit {
-    font-size: 36px;
+  .profile .timeline-list {
+    row-gap: 24px;
+  }
+  .profile .timeline .date {
+    font-size: 14px;
+  }
+  .profile .timeline .place {
+    margin-bottom: 12px;
+    font-size: inherit;
+  }
+  .profile .timeline .txt {
+    font-size: inherit;
   }
 }
 @media (max-width: 768px) {
@@ -978,20 +1071,35 @@ section {
   .profile .skill .txt {
     margin-bottom: 10px;
   }
+  .profile .timeline-item {
+    flex: 0 1 100%;
+  }
+  .profile .timeline-item:nth-child(odd), .profile .timeline-item:nth-child(even) {
+    padding: 0;
+  }
+  .profile .timeline .place {
+    font-size: 14px;
+  }
 }
 
 .career {
-  display: grid;
-  grid-template-columns: 4fr 8fr;
-  -moz-column-gap: 16px;
-       column-gap: 16px;
-  padding: 5rem 0;
+  padding-top: 10rem;
+  background-color: #fff;
+}
+.career .container {
+  flex-direction: row;
+  align-items: flex-start;
+  -moz-column-gap: 10%;
+       column-gap: 10%;
 }
 .career-tit {
+  position: sticky;
+  top: 2rem;
   font-size: 52px;
   font-weight: 900;
 }
 .career-list {
+  flex: 1 1 10%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 60px 40px;
@@ -1007,6 +1115,6 @@ section {
   font-size: 22px;
   margin-bottom: 40px;
 }
-.career .date {
+.career .txt {
   color: #7E7E94;
 }
