@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     gsap.ticker.lagSmoothing(0);
 
-
     // link 아이템 크기 확장
     const linkSection = document.querySelector('.link');
     const linkList = document.querySelector('.link .link-list');
@@ -29,15 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
-
-
     // PC /////////////////////////////////////////////////////////
     windowWidth.add("(min-width: 993px)", () => {
 
         // visual pin 효과
         const visualSection = gsap.utils.toArray(".visual");
-        visualSection.forEach((panel, i) => {
+        visualSection.forEach((panel) => {
             ScrollTrigger.create({
                 trigger: panel,
                 start: "top top",
@@ -48,18 +44,29 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         // visual txt 효과
+        const visuaItems = gsap.utils.toArray(".visual .txt-area .txt-item");
         const visualScroll = gsap.timeline({
             scrollTrigger: {
                 trigger: ".visual .container",
                 start: "top top",
                 end: "center 10%",
+                scrub: 1.5,
             }
         });
-        visualScroll.to(".visual .txt-area .txt-item", { x: 0, y: 0, opacity: 1 })
+        visuaItems.forEach((item, i) => {
+            visualScroll.fromTo(item,
+                { opacity: 0 },
+                {
+                    duration: 1, opacity: 1,
+                    onStart: () => item.classList.add("height-up"),
+                },
+                i * 0.5
+            );
+        });
 
         // link pin 효과
         const linkSection = gsap.utils.toArray(".link");
-        linkSection.forEach((panel, i) => {
+        linkSection.forEach((panel) => {
             ScrollTrigger.create({
                 trigger: panel,
                 start: "top top",
@@ -69,26 +76,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
 
+
+
     });
-
-
-
 
     // mobile /////////////////////////////////////////////////////////
     windowWidth.add("(max-width: 992px)", () => {
 
         // visual txt 효과
-        gsap.to(".visual .txt-area .txt-item", { x: 0, y: 0, opacity: 1 })
+        const visuaItems = gsap.utils.toArray(".visual .txt-area .txt-item");
+        const visualScroll = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".visual .container",
+                start: "top top",
+                end: "10% top",
+                scrub: 1.5,
+            }
+        });
+        visuaItems.forEach((item, i) => {
+            visualScroll.fromTo(item,
+                { opacity: 0 },
+                {
+                    duration: 1, opacity: 1,
+                    onStart: () => item.classList.add("height-up"),
+                },
+                i * 0.5
+            );
+        });
+
+
+
 
     });
 
 
 
-
-
-
-
     // profile /////////////////////////////////////////////////////////
+    // skill progressbar 효과
+    const progressBar = gsap.utils.toArray(".progress .line");
+
+
+    const progressScroll = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".profile",
+            start: "top top",
+            end: "center 10%",
+            scrub: 1.5,
+        }
+    });
+    progressBar.forEach((item) => {
+        progressScroll.from(item,{ width: 0 });
+    });
 
 
 
