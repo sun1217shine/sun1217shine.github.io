@@ -113,21 +113,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // profile /////////////////////////////////////////////////////////
     // skill progressbar 효과
-    const progressBar = gsap.utils.toArray(".progress .line");
-
-
-    const progressScroll = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".profile",
-            start: "top top",
-            end: "center 10%",
-            scrub: 1.5,
-        }
+    const progressBars = gsap.utils.toArray(".progress .line");
+    progressBars.forEach((item) => {
+        gsap.from(item, {
+            width: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".profile",
+                start: "top top",
+                end: "10% 10%",
+                scrub: 1.5
+            }
+        });
     });
-    progressBar.forEach((item) => {
-        progressScroll.from(item,{ width: 0 });
-    });
-
 
 
 
