@@ -132,7 +132,7 @@ section {
 }
 @media (max-width: 992px) {
   .main-con section {
-    min-height: 100vh;
+    min-height: 100dvh;
   }
   section {
     min-height: 0;
@@ -470,75 +470,134 @@ section {
 }
 
 .profile {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: #fff;
-  transition: 0.5s;
-  flex-wrap: nowrap;
-  margin: 0 auto;
-}
-.profile-head {
-  display: flex;
-  flex: 0 1 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: sticky;
-  left: 0;
-  top: 0;
-  z-index: 2;
-  padding: 30px;
-  height: 100vh;
+  min-height: 500vh;
+  padding: 0 15px;
   background-color: #000028;
   color: #fff;
-  transition: all 0.3s;
 }
-.profile-head .img {
-  max-width: 200px;
-  margin-bottom: 24px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  overflow: hidden;
+.profile .container {
+  position: sticky;
+  top: 0;
+  gap: 10%;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  height: 100vh;
 }
-.profile-head img {
+.profile-name {
+  width: 100%;
+  font-size: 150px;
+  font-weight: 800;
+  text-align: left;
+  line-height: 1;
+}
+.profile-name span {
+  z-index: 0;
+  position: relative;
+  color: #000028;
+}
+.profile-name span::before {
+  z-index: -1;
+  content: attr(data-content);
+  position: absolute;
+  left: 0;
+  -webkit-text-stroke: 4px #fff;
+}
+.profile-list {
+  display: flex;
+  justify-content: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+.profile-item {
+  display: flex;
+  align-items: center;
+  margin: 0 -10px;
+}
+.profile-item .circle {
+  position: relative;
+}
+.profile-item .circle .circle-svg {
+  width: 260px;
+  aspect-ratio: 1;
+}
+.profile-item .circle .circle-svg .circle-draw {
+  stroke-dashoffset: 810px;
+  stroke-dasharray: 810px;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.profile-item .circle-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  will-change: filter;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
-.profile .name {
-  margin-bottom: 12px;
-  font-size: 32px;
-}
-.profile .tag p {
-  display: inline-flex;
+.profile-item .circle-inner .txt-box {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  row-gap: 20px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
   text-align: center;
-  margin: 0 -10px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 100px;
-  opacity: 0;
 }
-.profile .tag span {
-  margin-right: 6px;
+.profile-item .circle-inner .material-symbols-outlined {
+  color: #FFFF12;
 }
+.profile-item .circle-inner .txt {
+  margin: 24px 0 6px;
+  font-weight: 300;
+  text-transform: capitalize;
+  opacity: 0.7;
+}
+.profile-item .circle-inner .tit {
+  font-size: 20px;
+  font-weight: 600;
+}
+@media (max-width: 1920px) {
+  .profile-item .circle .circle-svg {
+    width: 240px;
+  }
+}
+@media (max-width: 1400px) {
+  .profile-name {
+    font-size: 100px;
+  }
+  .profile-item .circle .circle-svg {
+    width: 220px;
+  }
+}
+@media (max-width: 992px) {
+  .profile-name {
+    font-size: 60px;
+    text-align: center;
+  }
+  .profile-item .circle .circle-svg {
+    width: 160px;
+  }
+}
+@media (max-width: 768px) {
+  .profile-name {
+    font-size: 48px;
+  }
+}
+
 .profile-body {
   position: absolute;
   right: -100dvh;
   z-index: 1;
-  padding: 20vh 80px 0;
+  padding: 0 80px 0;
   transition: 0.4s;
 }
 .profile-box {
-  margin-bottom: 200px;
+  height: 100vh;
+  padding-top: 10vh;
+  background-color: #fff;
 }
 .profile-tit {
   margin-bottom: 24px;
@@ -569,7 +628,11 @@ section {
 .profile.active .profile-body {
   position: static;
   flex: 0 1 75%;
-  width: 100%;
+  width: 75%;
+}
+.profile.active .profile-box {
+  left: 0 !important;
+  position: absolute !important;
 }
 .profile .skill-item {
   position: relative;
@@ -851,15 +914,16 @@ section {
   padding-top: 10rem;
   background-color: #fff;
 }
-.work-body {
-  display: flex;
-  gap: 4%;
-}
 .work-list {
-  flex: 0 1 calc(96% - 800px);
+  width: 100%;
+}
+.work .pin-spacer {
+  width: 100% !important;
 }
 .work-item {
   border-bottom: 1px solid #7E7E94;
+  background: #fff;
+  width: 100%;
 }
 .work-item .client {
   font-weight: 500;
@@ -876,6 +940,7 @@ section {
 }
 .work-item.active {
   border-bottom-width: 3px;
+  height: 100vh;
 }
 .work-item.active .client {
   font-weight: 600;
