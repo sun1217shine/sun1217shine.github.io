@@ -86,9 +86,6 @@ table {
   word-break: keep-all;
   width: 100%;
 }
-.sub-con .pin {
-  box-shadow: 0 -20px 20px rgba(0, 0, 0, 0.5);
-}
 .sub-con .container {
   flex-direction: row;
   justify-content: flex-start;
@@ -656,10 +653,16 @@ section {
 }
 .induction .container {
   flex-direction: column;
+  gap: 60px 5%;
+}
+.induction-wrap {
+  display: flex;
+  position: sticky;
+  top: 100px;
+  padding-bottom: 200px;
+  background-color: #fff;
 }
 .induction-tit {
-  flex: 0 1 20%;
-  height: 90%;
   position: sticky;
   left: 0;
   top: 5%;
@@ -668,9 +671,8 @@ section {
   overflow: hidden;
 }
 .induction-tit span {
-  position: absolute;
-  top: -10px;
-  right: -18px;
+  padding: 0 0 100px 100px;
+  transform: translate(20px, -12px);
   line-height: 1;
   color: #fff;
   font-size: 7rem;
@@ -678,28 +680,54 @@ section {
   writing-mode: sideways-lr;
 }
 
-.skill {
-  display: flex;
-  background-color: #fff;
-}
 .skill-list {
-  padding-top: 10%;
+  flex: 1 1 10%;
 }
 .skill-item {
   display: flex;
+  align-items: center;
   margin-bottom: 40px;
+  gap: 16px;
+}
+.skill-item:last-child {
+  margin-bottom: 0;
 }
 .skill-head {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding-right: 10px;
+  position: relative;
+  flex: 0 1 300px;
+}
+.skill-head::before {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 15px;
+  z-index: -1;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #000028;
+}
+.skill-head::after {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  transform: rotate(35deg);
+  width: 12px;
+  height: 1px;
+  background-color: #000028;
+  content: "";
+}
+.skill-head span {
+  padding: 0 16px 0 10px;
   background-color: #fff;
 }
 .skill .icon {
   display: inline-block;
+  vertical-align: bottom;
   width: 30px;
   height: 30px;
+  padding: 0;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -710,11 +738,17 @@ section {
      object-fit: cover;
 }
 .skill-body {
-  padding-left: 38px;
-  margin-top: 6px;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .skill .txt {
   font-size: 16px;
+}
+@media (max-width: 992px) {
+  .skill-body {
+    width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .skill-item {
@@ -727,14 +761,11 @@ section {
   }
 }
 
-.timeline {
-  display: flex;
-  background-color: #fff;
-}
 .timeline-list {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 60px;
+  align-content: space-around;
+  flex: 1 1 10%;
 }
 .timeline-item {
   position: relative;
@@ -798,10 +829,6 @@ section {
   font-weight: 600;
 }
 
-.career {
-  display: flex;
-  background-color: #fff;
-}
 .career-list {
   flex: 1 1 10%;
   display: grid;
@@ -912,9 +939,6 @@ section {
 }
 .work-list {
   width: 100%;
-}
-.work .pin-spacer {
-  width: 100% !important;
 }
 .work-item {
   border-bottom: 1px solid #7E7E94;
