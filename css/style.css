@@ -943,6 +943,9 @@ section {
   padding-top: 10rem;
   background-color: #fff;
 }
+.work .container {
+  flex-direction: column;
+}
 .work-list {
   width: 100%;
 }
@@ -963,20 +966,6 @@ section {
   display: inline-block;
   width: 0;
   overflow: hidden;
-}
-.work-item.active {
-  border-bottom-width: 3px;
-  height: 100vh;
-}
-.work-item.active .client {
-  font-weight: 600;
-  font-size: 42px;
-}
-.work-item.active .site-btn {
-  width: auto;
-}
-.work-item.active .info {
-  display: block;
 }
 .design {
   padding-top: 10rem;
