@@ -912,6 +912,9 @@ section {
   }
 }
 
+.career {
+  padding-bottom: 0;
+}
 .career-list {
   flex: 1 1 10%;
   display: grid;
