@@ -660,6 +660,9 @@ section {
   writing-mode: sideways-lr;
 }
 @media (max-width: 1400px) {
+  .induction-wrap {
+    top: 5%;
+  }
   .induction-tit span {
     font-size: 5rem;
   }
@@ -669,24 +672,13 @@ section {
     flex-direction: column;
     gap: 40px;
     top: 0;
+    padding: 5% 0;
   }
   .induction-tit {
-    top: 20px;
-    z-index: 2;
+    position: static;
     margin-right: 0;
     width: 100%;
     text-align: center;
-  }
-  .induction-tit::after {
-    position: absolute;
-    left: 0;
-    top: -20px;
-    display: block;
-    content: "";
-    z-index: 2;
-    width: 100%;
-    height: 20px;
-    background-color: pink;
   }
   .induction-tit span {
     padding: 16px;
@@ -711,7 +703,7 @@ section {
 }
 .skill-head {
   position: relative;
-  flex: 0 1 300px;
+  flex: 0 1 360px;
 }
 .skill-head::before {
   display: block;
@@ -754,8 +746,16 @@ section {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.skill-body {
+  flex: 1 1 10%;
+}
 .skill .txt {
   font-size: 16px;
+}
+@media (max-width: 1400px) {
+  .skill-head {
+    flex: 0 1 300px;
+  }
 }
 @media (max-width: 768px) {
   .skill-item {
@@ -920,15 +920,34 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  counter-reset: my-counter;
 }
 .career-item {
-  background-color: #f7f7f7;
+  position: relative;
   padding: 20px 24px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  counter-increment: my-counter;
+}
+.career-item::after {
+  display: block;
+  content: counter(my-counter);
+  position: absolute;
+  right: -14px;
+  bottom: -0.5em;
+  color: rgba(126, 126, 148, 0.1019607843);
+  font-weight: 900;
+  font-size: 100px;
 }
 .career .client {
   font-size: 16px;
   color: #484856;
   margin-bottom: 6px;
+}
+@media (max-width: 1400px) {
+  .career {
+    align-items: flex-start;
+  }
 }
 @media (max-width: 992px) {
   .career-list {
@@ -940,32 +959,61 @@ section {
 }
 
 .work {
-  padding-top: 10rem;
+  margin-top: 10rem;
   background-color: #fff;
 }
 .work .container {
-  flex-direction: column;
+  min-height: 0;
+}
+.work .main-tit {
+  width: 100%;
 }
 .work-list {
-  width: 100%;
+  display: flex;
 }
 .work-item {
-  border-bottom: 1px solid #7E7E94;
-  background: #fff;
+  position: relative;
+  flex-shrink: 0;
+  width: 100vw;
+}
+.work-item .container {
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+}
+.work-unit {
+  display: flex;
+  align-items: center;
+  gap: 5%;
   width: 100%;
 }
-.work-item .client {
+.work-unit .img {
+  flex: 0 1 40%;
+  aspect-ratio: 16/9;
+}
+.work-unit img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.work-unit .client {
   font-weight: 500;
   font-size: 32px;
   color: #484856;
 }
-.work-item .info {
-  display: none;
+.work-unit .color-chip li {
+  background-color: var(--chip-color);
+  color: #fff;
 }
-.work-item .site-btn {
-  display: inline-block;
-  width: 0;
-  overflow: hidden;
+.work.active {
+  background-color: #000028;
+}
+.work.active .main-tit {
+  color: #fff;
+}
+.work.active .tit-sub {
+  color: #fff;
 }
 .design {
   padding-top: 10rem;
