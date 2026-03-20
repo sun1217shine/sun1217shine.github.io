@@ -977,13 +977,13 @@ section {
   width: 100vw;
 }
 .work-item .container {
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   height: 100%;
 }
 .work-unit {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 5%;
   width: 100%;
 }
@@ -997,14 +997,51 @@ section {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.work-unit .info {
+  flex: auto;
+}
 .work-unit .client {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+.work-unit .info-list {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.work-unit .tit {
+  flex: 0 1 120px;
   font-weight: 500;
-  font-size: 32px;
   color: #484856;
 }
+.work-unit .tit + div, .work-unit .tit + ul {
+  flex: 1 1 10%;
+}
+.work-unit .part-list {
+  display: flex;
+  gap: 12px 50px;
+}
+.work-unit .part-item .badge {
+  padding: 8px 16px;
+  margin-right: 20px;
+  background-color: #E8E8E8;
+  color: #7E7E94;
+}
+.work-unit .color-chip {
+  display: flex;
+  gap: 10px;
+}
 .work-unit .color-chip li {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
   background-color: var(--chip-color);
   color: #fff;
+  text-align: center;
+  line-height: 100px;
+}
+.work-unit .txt {
+  margin-top: 20px;
 }
 .work.active {
   background-color: #000028;
@@ -1014,6 +1051,9 @@ section {
 }
 .work.active .tit-sub {
   color: #fff;
+}
+.work.active .work-item .container {
+  align-items: center;
 }
 .design {
   padding-top: 10rem;
