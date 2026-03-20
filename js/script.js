@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.ticker.lagSmoothing(0);
 
 
-
     // PC /////////////////////////////////////////////////////////
     mm.add("(min-width: 993px)", () => {
         // 마우스 글자 효과

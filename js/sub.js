@@ -13,22 +13,43 @@ profileItem.forEach((item, j) => { profileTl.to(item, {opacity:1}, j * .5);},"+=
 
 
 // work /////////////////////////////////////////////////////////
-// pin
-const workItem = gsap.utils.toArray(".work-item");
-workItem.forEach((item, i) => {
-    gsap.set(item, { zIndex: i });
-    ScrollTrigger.create({
-        trigger: item,
-        start: "top-=1 top",
-        endTrigger: ".work-list",
-        end: "bottom bottom",
-        pin: true,W
-        pinSpacing: false,
-        scrub: 1,
-        onEnter: () => item.classList.add("active"),
-        onLeaveBack: () => item.classList.remove("active"),
-    });
+const workSection = document.querySelector(".work");
+const workList = document.querySelector(".work-list");
+const workItems = gsap.utils.toArray(".work-item");
+const colorItems = document.querySelectorAll('.color-chip li[data-color]');
+
+// 가로 스크롤
+gsap.to(workList, {
+    xPercent: -100 * (workItems.length - 1), 
+    ease: "none", 
+    scrollTrigger: {
+        trigger: ".work-body", 
+        start: "top top",      
+        end: () => `+=${workList.offsetWidth}`, 
+        pin: true,
+        scrub: 1.5,          
+        onToggle: (self) => {
+            // self.isActive는 핀이 고정된 상태일 때 true가 됩니다.
+            if (self.isActive) {
+                workList.classList.add("active");
+                workSection.classList.add("active"); 
+            } else {
+                workSection.classList.remove("active"); 
+                workList.classList.remove("active");
+            }
+        }
+    }
 });
+
+// 홈페이지 별 색상칩
+colorItems.forEach(item => {
+    const color = item.dataset.color; 
+    item.style.setProperty('--chip-color', color);
+});
+
+
+
+
 
 
 // PC /////////////////////////////////////////////////////////
@@ -44,7 +65,6 @@ mm.add("(min-width: 993px)", () => {
                 start: "center bottom",
                 end: "top top",
                 scrub: 1,
-                markers:true
             }
         });
     });
