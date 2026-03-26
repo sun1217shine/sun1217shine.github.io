@@ -27,16 +27,16 @@ gsap.to(workList, {
         start: "top top",      
         end: () => `+=${workList.offsetWidth}`, 
         pin: true,
+        markers:true,
         scrub: 1.5,          
         onToggle: (self) => {
             // self.isActive는 핀이 고정된 상태일 때 true가 됩니다.
             if (self.isActive) {
-                workList.classList.add("active");
                 workSection.classList.add("active"); 
             } else {
                 workSection.classList.remove("active"); 
-                workList.classList.remove("active");
             }
+
         }
     }
 });

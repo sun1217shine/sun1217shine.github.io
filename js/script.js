@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursorTexts.forEach(txt => {
                     if (txt.querySelector('span')) {
                         txt.querySelector('span').textContent = "click!";
-                        txt.querySelector('span').style.color = "#4747D4";
+                        txt.querySelector('span').style.color = "#FFFF12";
                     } else {
                         txt.style.webkitTextStroke = "1px #FFFF12";
                         txt.textContent = "click!";
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursorTexts.forEach(txt => {
                     if (txt.querySelector('span')) {
                         txt.querySelector('span').textContent = "scroll down";
-                        txt.querySelector('span').style.color = "#FFFF12";
+                        txt.querySelector('span').style.color = "#4747D4";
                     } else {
                         txt.style.webkitTextStroke = "1px #4747D4";
                         txt.textContent = "scroll down";
