@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.ticker.lagSmoothing(0);
 
 
+    
+
     // PC /////////////////////////////////////////////////////////
     mm.add("(min-width: 993px)", () => {
-        // 마우스 글자 효과
+        // 마우스 글자 따라 다니기
         window.addEventListener("mousemove", e => {
             gsap.to(".cursor .txt", {
                 x: e.clientX,
@@ -34,36 +36,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        // a 태그에 마우스 올렸을 때 글자 변경
+
+        // a 태그에 마우스 올렸을 때 글자 및 색상 변경
         const links = document.querySelectorAll('a');
-        const cursorTexts = document.querySelectorAll('.cursor .txt');
         links.forEach(link => {
             link.addEventListener('mouseenter', () => {
-                cursorTexts.forEach(txt => {
-                    if (txt.querySelector('span')) {
-                        txt.querySelector('span').textContent = "click!";
-                        txt.querySelector('span').style.color = "#FFFF12";
-                    } else {
-                        txt.style.webkitTextStroke = "1px #FFFF12";
-                        txt.textContent = "click!";
-                    }
-                });
-                gsap.to(".cursor .txt", { duration: 0.3 });
+                updateCursorText("click!", "#FFFF12", "1px #FFFF12");
             });
             link.addEventListener('mouseleave', () => {
-                cursorTexts.forEach(txt => {
-                    if (txt.querySelector('span')) {
-                        txt.querySelector('span').textContent = "scroll down";
-                        txt.querySelector('span').style.color = "#4747D4";
-                    } else {
-                        txt.style.webkitTextStroke = "1px #4747D4";
-                        txt.textContent = "scroll down";
-                    }
-                });
-                gsap.to(".cursor .txt", { duration: .3 });
+                updateCursorText("scroll down", "#4747D4", "1px #4747D4");
+            });
+            link.addEventListener('click', () => {
+                updateCursorText("scroll down", "#4747D4", "1px #4747D4");
             });
         });
-
+        function updateCursorText(text, color, stroke) {
+            const cursorTexts = document.querySelectorAll('.cursor .txt');
+            cursorTexts.forEach(txt => {
+                const span = txt.querySelector('.cursor span');
+                if (span) {
+                    span.textContent = text;
+                    span.style.color = color;
+                } else {
+                    txt.textContent = text;
+                    txt.style.webkitTextStroke = stroke;
+                }
+            });
+            gsap.to(".cursor .txt", { duration: 0.3 });
+        }
     });
 
 

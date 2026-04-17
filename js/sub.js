@@ -5,11 +5,9 @@ const profileSection = document.querySelector('.profile');
 const profileItem = gsap.utils.toArray(".profile-item", profileSection);
 const profileTl = gsap.timeline();
 
-// why 텍스트 효과
-profileTl.to(".profile-name span",{width:'auto', duration:1});
 
-// 원형 효과
-profileItem.forEach((item, j) => { profileTl.to(item, {opacity:1}, j * .5);},"+=1");
+// profile 원형 효과
+profileItem.forEach((item, j) => { profileTl.to(item, {opacity:1}, j * .3);},"+=1");
 
 
 // work /////////////////////////////////////////////////////////
@@ -48,26 +46,31 @@ colorItems.forEach(item => {
 });
 
 
+// design /////////////////////////////////////////////////////////
+gsap.to(workList, {
+    scrollTrigger: {
+        trigger: ".work-body", 
+        start: "top top",      
+        markers:true,
+        scrub: 1.5,          
+        onToggle: (self) => {
+            // self.isActive는 핀이 고정된 상태일 때 true가 됩니다.
+            if (self.isActive) {
+                workSection.classList.add("active"); 
+            } else {
+                workSection.classList.remove("active"); 
+            }
+
+        }
+    }
+});
+
 
 
 
 
 // PC /////////////////////////////////////////////////////////
 mm.add("(min-width: 993px)", () => {
-    // introduction title 패딩 효과
-    const introTit = document.querySelectorAll('.induction-tit span');
-    introTit.forEach((item) => {
-        gsap.to(item, {
-            paddingLeft: 100, 
-            duration: 1.5,  
-            scrollTrigger: {
-                trigger: item,
-                start: "center bottom",
-                end: "top top",
-                scrub: 1,
-            }
-        });
-    });
 
 
 
