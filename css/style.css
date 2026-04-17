@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(/css/font.css);
 *, ::after, ::before {
   margin: 0;
@@ -89,6 +90,7 @@ table {
 .sub-con .container {
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 section {
@@ -138,12 +140,12 @@ section {
   left: 0;
   font-size: 50px;
   font-weight: 700;
-  -webkit-text-stroke: 1px #FFFF12;
+  -webkit-text-stroke: 1px #4747D4;
   color: transparent;
   white-space: nowrap;
 }
 .cursor .txt span {
-  color: #FFFF12;
+  color: #4747D4;
   -webkit-text-stroke: 0;
 }
 
@@ -289,9 +291,9 @@ section {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
+  width: 16px;
   height: 20px;
-  border: 4px solid #fff;
+  border-right: 4px solid #fff;
 }
 .link-list {
   display: flex;
@@ -520,11 +522,9 @@ section {
   line-height: 1;
 }
 .profile-name span {
-  overflow: hidden;
   z-index: 0;
   position: relative;
   padding: 0 12px 12px 0;
-  width: 0;
   color: #000028;
 }
 .profile-name span::before {
@@ -628,64 +628,64 @@ section {
 }
 
 .induction {
+  padding-top: 80px;
   background-color: #fff;
 }
-.induction .container {
-  flex-direction: column;
-}
-.induction-wrap {
+.induction-head {
+  flex: 0 1 100%;
   display: flex;
-  align-items: center;
-  position: sticky;
-  top: 100px;
-  padding: 5% 0 50vh;
-  background-color: #fff;
+  align-items: self-end;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+}
+.induction-head .tit {
+  font-size: 72px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.induction-head .line {
+  flex: auto;
+  position: relative;
+  height: 8px;
+  margin-bottom: 10px;
+  background-color: #000028;
+}
+.induction-head .dot {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 8px;
+  border-right: 4px solid #fff;
+  background-color: #000028;
+}
+.induction-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px 80px;
+  margin-top: 80px;
 }
 .induction-tit {
-  position: sticky;
-  left: 0;
-  top: 0;
-  margin-right: 5%;
-  background-color: #000028;
-  overflow: hidden;
-}
-.induction-tit span {
-  display: inline-block;
-  padding: 0 0 60px 0;
-  transform: translate(20px, -12px);
-  line-height: 1;
-  color: #fff;
-  font-size: 7rem;
+  padding-top: 16px;
+  margin-bottom: 32px;
+  border-top: 1px solid #000028;
   text-transform: uppercase;
-  writing-mode: sideways-lr;
+  font-size: 32px;
 }
 @media (max-width: 1400px) {
-  .induction-wrap {
-    top: 5%;
+  .induction {
+    padding-bottom: 64px;
   }
-  .induction-tit span {
-    font-size: 5rem;
+  .induction-head .tit {
+    font-size: 64px;
+  }
+  .induction-body {
+    margin-top: 64px;
   }
 }
-@media (max-width: 992px) {
-  .induction-wrap {
-    flex-direction: column;
-    gap: 40px;
-    top: 0;
-    padding: 5% 0;
-  }
-  .induction-tit {
-    position: static;
-    margin-right: 0;
-    width: 100%;
-    text-align: center;
-  }
-  .induction-tit span {
-    padding: 16px;
-    transform: none;
-    font-size: 32px;
-    writing-mode: horizontal-tb;
-  }
+.skill {
+  flex: 0 1 calc(50% - 40px);
 }
 .skill-list {
   position: relative;
@@ -703,7 +703,7 @@ section {
 }
 .skill-head {
   position: relative;
-  flex: 0 1 360px;
+  flex: 0 1 290px;
 }
 .skill-head::before {
   display: block;
@@ -753,11 +753,17 @@ section {
   font-size: 16px;
 }
 @media (max-width: 1400px) {
+  .skill {
+    flex: 0 1 100%;
+  }
   .skill-head {
     flex: 0 1 300px;
   }
 }
 @media (max-width: 768px) {
+  .skill {
+    flex: 0 1 100%;
+  }
   .skill-item {
     flex-direction: column;
     align-items: flex-start;
@@ -782,6 +788,9 @@ section {
   }
 }
 
+.timeline {
+  flex: 0 1 calc(50% - 40px);
+}
 .timeline-list {
   display: flex;
   flex-wrap: wrap;
@@ -859,6 +868,9 @@ section {
   }
 }
 @media (max-width: 1400px) {
+  .timeline {
+    flex: 0 1 100%;
+  }
   .timeline-list {
     row-gap: 50px;
   }
@@ -913,12 +925,13 @@ section {
 }
 
 .career {
+  flex: 0 1 100%;
   padding-bottom: 0;
 }
 .career-list {
   flex: 1 1 10%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   counter-reset: my-counter;
 }
@@ -1087,3 +1100,4 @@ section {
 .design .container {
   flex-direction: column;
 }
+/* 2. 전체 화면 모달 스타일 */
